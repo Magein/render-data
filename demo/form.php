@@ -13,13 +13,13 @@ spl_autoload_register(function ($class) {
 
 require_once './function.php';
 
-use Magein\view\library\RenderData;
+use Magein\renderdata\library\RenderData;
 
 $data = getData(1);
 
 $data = array_pop($data);
 
-$attr = new RenderData($data, \Magein\view\library\constant\RenderStyleConstant::RENDER_FORM);
+$attr = new RenderData($data, \Magein\renderdata\library\constant\RenderStyleConstant::RENDER_FORM);
 
 $attr->append('name', '姓名');
 $attr->append('age', '年龄')->select()->setOptions([16 => 16, 17 => 17, 18 => 18, 19 => 19]);

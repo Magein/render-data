@@ -1,23 +1,23 @@
 <?php
 
-namespace Magein\view\library\traits;
+namespace Magein\renderdata\library\traits;
 
-use Magein\view\library\render\form\CheckboxRender;
-use Magein\view\library\render\form\FileRender;
-use Magein\view\library\render\form\HiddenRender;
-use Magein\view\library\render\form\PasswordRender;
-use Magein\view\library\render\form\RadioRender;
-use Magein\view\library\render\form\SelectRender;
-use Magein\view\library\render\form\TextareaRender;
-use Magein\view\library\render\form\TextRender;
+use Magein\renderdata\library\render\form\CheckboxRender;
+use Magein\renderdata\library\render\form\FileRender;
+use Magein\renderdata\library\render\form\HiddenRender;
+use Magein\renderdata\library\render\form\PasswordRender;
+use Magein\renderdata\library\render\form\RadioRender;
+use Magein\renderdata\library\render\form\SelectRender;
+use Magein\renderdata\library\render\form\TextareaRender;
+use Magein\renderdata\library\render\form\TextRender;
 
-use Magein\view\library\render\CharRenderClass;
-use Magein\view\library\render\ImageRenderClass;
-use Magein\view\library\render\RedirectRenderClass;
+use Magein\renderdata\library\render\CharRenderClass;
+use Magein\renderdata\library\render\ImageRenderClass;
+use Magein\renderdata\library\render\RedirectRenderClass;
 
 /**
  * Trait Tips
- * @package Magein\view\library\traits
+ * @package Magein\renderdata\library\traits
  */
 trait Tips
 {

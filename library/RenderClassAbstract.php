@@ -1,10 +1,10 @@
 <?php
 
-namespace Magein\view\library;
+namespace Magein\renderdata\library;
 
 /**
  * Class ItemAbstract
- * @package Magein\view\library
+ * @package Magein\renderdata\library
  *
  * @method getRender
  */

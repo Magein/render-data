@@ -1,12 +1,12 @@
 <?php
 
-namespace Magein\view\library;
+namespace Magein\renderdata\library;
 
-use Magein\view\library\constant\RenderStyleConstant;
-use Magein\view\library\render\CharRenderClass;
-use Magein\view\library\render\form\TextRender;
-use Magein\view\library\style\RenderStyle;
-use Magein\view\library\traits\Tips;
+use Magein\renderdata\library\constant\RenderStyleConstant;
+use Magein\renderdata\library\render\CharRenderClass;
+use Magein\renderdata\library\render\form\TextRender;
+use Magein\renderdata\library\style\RenderStyle;
+use Magein\renderdata\library\traits\Tips;
 
 class RenderData
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Magein\view\library\render;
+namespace Magein\renderdata\library\render;
 
-use Magein\view\library\RenderClassAbstract;
+use Magein\renderdata\library\RenderClassAbstract;
 
 class FormRenderClass extends RenderClassAbstract
 {

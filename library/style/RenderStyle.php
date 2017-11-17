@@ -1,8 +1,8 @@
 <?php
 
-namespace Magein\view\library\style;
+namespace Magein\renderdata\library\style;
 
-use Magein\view\library\RenderStyleAbstract;
+use Magein\renderdata\library\RenderStyleAbstract;
 
 class RenderStyle extends RenderStyleAbstract
 {

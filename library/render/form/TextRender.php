@@ -1,9 +1,9 @@
 <?php
 
-namespace Magein\view\library\render\form;
+namespace Magein\renderdata\library\render\form;
 
-use Magein\view\library\constant\FormItemConstant;
-use Magein\view\library\render\FormRenderClass;
+use Magein\renderdata\library\constant\FormItemConstant;
+use Magein\renderdata\library\render\FormRenderClass;
 
 class TextRender extends FormRenderClass
 {

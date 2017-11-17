@@ -15,7 +15,7 @@ require_once './function.php';
 
 $data = getData(12);
 
-use Magein\view\library\RenderData;
+use Magein\renderdata\library\RenderData;
 
 $attr = new RenderData($data);
 $attr->append('name', '姓名')->redirect()->setHref(function ($data) {

@@ -1,8 +1,8 @@
 {
-  "name": "magein/view",
+  "name": "magein/renderdata",
   "description": "php渲染表格和表单工具",
   "type": "library",
-  "homepage": "https://github.com/magein/display",
+  "homepage": "https://github.com/magein/renderdata",
   "license": "Apache-2.0",
   "authors": [
     {
@@ -15,8 +15,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Magein\\view\\core": "core/",
-      "Magein\\view\\traits": "core/"
+      "Magein\\renderdata\\library": "library/",
+      "Magein\\renderdata\\traits": "core/"
     },
     "files": []
   },
