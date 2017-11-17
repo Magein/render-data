@@ -1,0 +1,29 @@
+{
+  "name": "magein/view",
+  "description": "php渲染表格和表单工具",
+  "type": "library",
+  "homepage": "https://github.com/magein/display",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "xiaomage",
+      "email": "1154699897@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Magein\\view\\core": "core/",
+      "Magein\\view\\traits": "core/"
+    },
+    "files": []
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    }
+  }
+}
