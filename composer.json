@@ -15,8 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Magein\\renderData\\library": "library/",
-      "Magein\\renderData\\traits": "core/"
+      "Magein\\renderData": "library/"
     }
   }
 }
