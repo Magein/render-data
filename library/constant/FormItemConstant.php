@@ -1,11 +1,11 @@
 <?php
 
-namespace Magein\renderdata\library\constant;
+namespace Magein\renderData\library\constant;
 
 /**
  *
  * Class FormItemConstant
- * @package Magein\renderdata\library\constant
+ * @package Magein\renderData\library\constant
  */
 class FormItemConstant extends Constant
 {

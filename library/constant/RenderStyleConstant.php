@@ -1,6 +1,6 @@
 <?php
 
-namespace Magein\renderdata\library\constant;
+namespace Magein\renderData\library\constant;
 
 
 class RenderStyleConstant extends Constant

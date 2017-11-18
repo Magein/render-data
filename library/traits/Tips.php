@@ -1,23 +1,23 @@
 <?php
 
-namespace Magein\renderdata\library\traits;
+namespace Magein\renderData\library\traits;
 
-use Magein\renderdata\library\render\form\CheckboxRender;
-use Magein\renderdata\library\render\form\FileRender;
-use Magein\renderdata\library\render\form\HiddenRender;
-use Magein\renderdata\library\render\form\PasswordRender;
-use Magein\renderdata\library\render\form\RadioRender;
-use Magein\renderdata\library\render\form\SelectRender;
-use Magein\renderdata\library\render\form\TextareaRender;
-use Magein\renderdata\library\render\form\TextRender;
+use Magein\renderData\library\render\form\CheckboxRender;
+use Magein\renderData\library\render\form\FileRender;
+use Magein\renderData\library\render\form\HiddenRender;
+use Magein\renderData\library\render\form\PasswordRender;
+use Magein\renderData\library\render\form\RadioRender;
+use Magein\renderData\library\render\form\SelectRender;
+use Magein\renderData\library\render\form\TextareaRender;
+use Magein\renderData\library\render\form\TextRender;
 
-use Magein\renderdata\library\render\CharRenderClass;
-use Magein\renderdata\library\render\ImageRenderClass;
-use Magein\renderdata\library\render\RedirectRenderClass;
+use Magein\renderData\library\render\CharRenderClass;
+use Magein\renderData\library\render\ImageRenderClass;
+use Magein\renderData\library\render\RedirectRenderClass;
 
 /**
  * Trait Tips
- * @package Magein\renderdata\library\traits
+ * @package Magein\renderData\library\traits
  */
 trait Tips
 {

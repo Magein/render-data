@@ -1,6 +1,6 @@
 <?php
 
-namespace Magein\renderdata\library;
+namespace Magein\renderData\library;
 
 abstract class RenderStyleAbstract
 {

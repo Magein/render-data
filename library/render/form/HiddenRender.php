@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Magein\renderdata\library\render\form;
+namespace Magein\renderData\library\render\form;
 
-use Magein\renderdata\library\constant\FormItemConstant;
-use Magein\renderdata\library\render\FormRenderClass;
+use Magein\renderData\library\constant\FormItemConstant;
+use Magein\renderData\library\render\FormRenderClass;
 
 class HiddenRender extends FormRenderClass
 {

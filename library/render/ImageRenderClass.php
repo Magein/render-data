@@ -1,8 +1,8 @@
 <?php
 
-namespace Magein\renderdata\library\render;
+namespace Magein\renderData\library\render;
 
-use Magein\renderdata\library\RenderClassAbstract;
+use Magein\renderData\library\RenderClassAbstract;
 
 class ImageRenderClass extends RenderClassAbstract
 {

@@ -1,5 +1,5 @@
 {
-  "name": "magein/renderdata",
+  "name": "magein/render-data",
   "description": "php渲染表格和表单工具",
   "type": "library",
   "homepage": "https://github.com/magein/renderdata",
@@ -15,15 +15,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Magein\\renderdata\\library": "library/",
-      "Magein\\renderdata\\traits": "core/"
-    },
-    "files": []
-  },
-  "repositories": {
-    "packagist": {
-      "type": "composer",
-      "url": "https://packagist.phpcomposer.com"
+      "Magein\\renderData\\library": "library/",
+      "Magein\\renderData\\traits": "core/"
     }
   }
 }
