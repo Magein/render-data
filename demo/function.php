@@ -1,5 +1,21 @@
 <?php
 
+splAutLoadRegister();
+
+function splAutLoadRegister()
+{
+    spl_autoload_register(function ($class) {
+        preg_match('/Magein\\\renderData\\\([a-zA-Z\\\]+)/', $class, $matches);
+        $dir = isset($matches[1]) ? $matches[1] : null;
+        if ($dir) {
+            $dir = '../' . $dir . '.php';
+            if (is_file($dir)) {
+                include $dir;
+            }
+        }
+    });
+}
+
 /**
  * @param int $number
  * @return array

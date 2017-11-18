@@ -1,16 +1,5 @@
 <?php
 
-spl_autoload_register(function ($class) {
-    preg_match('/Magein\\\view\\\([a-zA-Z\\\]+)/', $class, $matches);
-    $dir = isset($matches[1]) ? $matches[1] : null;
-    if ($dir) {
-        $dir = '../' . $dir . '.php';
-        if (is_file($dir)) {
-            include $dir;
-        }
-    }
-});
-
 require_once './function.php';
 
 use Magein\renderData\library\RenderData;
