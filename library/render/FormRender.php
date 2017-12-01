@@ -2,9 +2,9 @@
 
 namespace Magein\renderData\library\render;
 
-use Magein\renderData\library\RenderClassAbstract;
+use Magein\renderData\library\FieldRenderAbstract;
 
-class FormRenderClass extends RenderClassAbstract
+class FormRender extends FieldRenderAbstract
 {
     /**
      * @var string
@@ -19,7 +19,7 @@ class FormRenderClass extends RenderClassAbstract
     /**
      * @var integer
      */
-    protected $required = 1;
+    protected $required = 0;
 
     /**
      * @var string
@@ -39,7 +39,17 @@ class FormRenderClass extends RenderClassAbstract
     /**
      * @var string|array
      */
-    protected $value = '';
+    protected $value = null;
+
+    /**
+     * @var int
+     */
+    protected $disabled = false;
+
+    /**
+     * @var int
+     */
+    protected $readonly = false;
 
     /**
      * @return string
@@ -72,6 +82,14 @@ class FormRenderClass extends RenderClassAbstract
             $attr .= ' class="' . $this->class . '"';
         }
 
+        if ($this->readonly) {
+            $attr .= ' readonly=true';
+        }
+
+        if ($this->disabled) {
+            $attr .= ' disabled=true';
+        }
+
         if ($this->length) {
             $attr .= ' minlength="' . isset($this->length[0]) ? $this->length[0] : 1 . '"';
             $attr .= ' maxlength="' . isset($this->length[1]) ? $this->length[1] : 255 . '"';
@@ -89,36 +107,6 @@ class FormRenderClass extends RenderClassAbstract
 
         return '<input ' . $attr . '/>';
     }
-
-    /**
-     * @param array $data
-     */
-    public function init($data)
-    {
-        $properties = $this->getProperties(true);
-        foreach ($data as $key => $item) {
-            if (in_array($key, $properties)) {
-                $this->$key = $item;
-            }
-        }
-    }
-
-    /**
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param string $type
-     */
-    protected function setType($type)
-    {
-        $this->type = $type;
-    }
-
 
     /**
      * @return string
@@ -140,14 +128,6 @@ class FormRenderClass extends RenderClassAbstract
     }
 
     /**
-     * @return int
-     */
-    protected function getRequired()
-    {
-        return $this->required;
-    }
-
-    /**
      * @param $required
      * @return $this
      */
@@ -156,14 +136,6 @@ class FormRenderClass extends RenderClassAbstract
         $this->required = $required;
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    protected function getPlaceholder()
-    {
-        return $this->placeholder;
     }
 
     /**
@@ -178,14 +150,6 @@ class FormRenderClass extends RenderClassAbstract
     }
 
     /**
-     * @return array
-     */
-    protected function getLength()
-    {
-        return $this->length;
-    }
-
-    /**
      * @param $length
      * @return $this
      */
@@ -194,33 +158,6 @@ class FormRenderClass extends RenderClassAbstract
         $this->length = $length;
 
         return $this;
-    }
-
-    /**
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return $this->options;
-    }
-
-    /**
-     * @param $options
-     * @return $this
-     */
-    public function setOptions($options)
-    {
-        $this->options = $options;
-
-        return $this;
-    }
-
-    /**
-     * @return array|string
-     */
-    protected function getValue()
-    {
-        return $this->value;
     }
 
     /**
@@ -235,49 +172,13 @@ class FormRenderClass extends RenderClassAbstract
     }
 
     /**
-     * @param bool $toArray
-     * @return \ReflectionProperty[]
+     * @param bool $disabled
+     * @return $this
      */
-    protected function getProperties($toArray = false)
+    public function setDisabled($disabled = true)
     {
-        $refection = new \ReflectionClass($this);
+        $this->disabled = $disabled;
 
-        $properties = $refection->getProperties();
-
-        if ($toArray) {
-            foreach ($properties as $key => $item) {
-                $properties[$key] = $item->name;
-            }
-        }
-
-        return $properties;
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray()
-    {
-
-        $properties = $this->getProperties();
-
-        $data = [];
-
-        foreach ($properties as $property) {
-
-            $name = $property->name;
-
-            $data[$name] = $this->$name;
-        }
-
-        return $data;
-    }
-
-    /**
-     * @return string
-     */
-    public function toJson()
-    {
-        return json_encode($this->toArray(), JSON_UNESCAPED_UNICODE);
+        return $this;
     }
 }

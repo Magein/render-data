@@ -6,9 +6,8 @@ namespace Magein\renderData\library;
  * Class ItemAbstract
  * @package Magein\renderData\library
  *
- * @method getRender
  */
-abstract class RenderClassAbstract
+abstract class FieldRenderAbstract
 {
     /**
      * @return string
@@ -41,51 +40,67 @@ abstract class RenderClassAbstract
     protected $callback;
 
     /**
-     * @param array $data
+     * @param $data
+     * @return $this
      */
     public function setData($data)
     {
         $this->data = $data;
+
+        return $this;
     }
 
     /**
-     * @param string $name
+     * @param $name
+     * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
-     * @param array|string $value
+     * @param $value
+     * @return $this
      */
     public function setValue($value)
     {
         $this->value = $value;
+
+        return $this;
     }
 
     /**
-     * @param callable $callback
+     * @param $callback
+     * @return $this
      */
     public function setCallback($callback)
     {
         $this->callback = $callback;
-    }
 
-    /**
-     * @return callable
-     */
-    public function getCallback()
-    {
-        return $this->callback;
+        return $this;
     }
 
     /**
      * @param $class
+     * @return $this
      */
     public function setClass($class)
     {
         $this->class = $class;
+
+        return $this;
+    }
+
+    /**
+     * @param $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        return $this->$name;
     }
 
     /**
@@ -95,13 +110,9 @@ abstract class RenderClassAbstract
      */
     public function __call($name, $arguments)
     {
-        preg_match('/get([a-zA-Z]+)/', $name, $matches);
-
-        if (isset($matches[1])) {
-            $method = lcfirst($matches[1]);
-            return $this->$method();
+        if (method_exists($this, $name)) {
+            return $this->$name();
         }
-
         return null;
     }
 }

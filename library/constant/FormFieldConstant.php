@@ -4,10 +4,10 @@ namespace Magein\renderData\library\constant;
 
 /**
  *
- * Class FormItemConstant
+ * Class FormFieldConstant
  * @package Magein\renderData\library\constant
  */
-class FormItemConstant extends Constant
+class FormFieldConstant extends Constant
 {
     const TYPE_TEXT = 'text';
 

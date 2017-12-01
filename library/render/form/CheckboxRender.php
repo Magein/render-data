@@ -2,23 +2,34 @@
 
 namespace Magein\renderData\library\render\form;
 
-use Magein\renderData\library\constant\FormItemConstant;
-use Magein\renderData\library\render\FormRenderClass;
+use Magein\renderData\library\constant\FormFieldConstant;
+use Magein\renderData\library\render\FormRender;
 
-class CheckboxRender extends FormRenderClass
+class CheckboxRender extends FormRender
 {
-    public function __construct()
+    protected $type = FormFieldConstant::TYPE_CHECKBOX;
+
+    /**
+     * @param $options
+     * @return $this
+     */
+    public function setOptions($options)
     {
-        $this->setType(FormItemConstant::TYPE_CHECKBOX);
+        $this->options = $options;
+
+        return $this;
     }
 
     protected function render()
     {
         $value = $this->value;
 
-        $this->value = null;
+        $name = $this->name;
 
+        $this->value = null;
+        $this->name = null;
         $attr = $this->attr();
+
 
         $input = '';
 
@@ -36,7 +47,7 @@ class CheckboxRender extends FormRenderClass
                     $checked = false;
                 }
 
-                $input .= '<label><input ' . $attr . ($checked ? 'checked' : '') . '/>' . $option . '</label>';
+                $input .= '<label><input name="' . $name . '[]"' . $attr . ($checked ? 'checked' : '') . ' value="' . $key . '"/>' . $option . '</label>';
             }
 
         }

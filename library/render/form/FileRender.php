@@ -2,14 +2,11 @@
 
 namespace Magein\renderData\library\render\form;
 
-use Magein\renderData\library\constant\FormItemConstant;
-use Magein\renderData\library\render\FormRenderClass;
+use Magein\renderData\library\constant\FormFieldConstant;
+use Magein\renderData\library\render\FormRender;
 
-class FileRender extends FormRenderClass
+class FileRender extends FormRender
 {
+    protected $type=FormFieldConstant::TYPE_FILE;
 
-    public function __construct()
-    {
-        $this->setType(FormItemConstant::TYPE_FILE);
-    }
 }

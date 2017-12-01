@@ -2,9 +2,9 @@
 
 namespace Magein\renderData\library\render;
 
-use Magein\renderData\library\RenderClassAbstract;
+use Magein\renderData\library\FieldRenderAbstract;
 
-class RedirectRenderClass extends RenderClassAbstract
+class RedirectRender extends FieldRenderAbstract
 {
     /**
      * @var string|callable
@@ -12,19 +12,9 @@ class RedirectRenderClass extends RenderClassAbstract
     private $href;
 
     /**
-     * @var string|array
-     */
-    private $param;
-
-    /**
      * @var string
      */
-    private $target = '_self';
-
-    /**
-     * @var string
-     */
-    private $description = '';
+    private $target = '_bank';
 
     /**
      * @param string|callable $href
@@ -32,19 +22,7 @@ class RedirectRenderClass extends RenderClassAbstract
      */
     public function setHref($href)
     {
-
         $this->href = $href;
-
-        return $this;
-    }
-
-    /**
-     * @param string|array $param
-     * @return $this
-     */
-    public function setParam($param)
-    {
-        $this->param = $param;
 
         return $this;
     }
@@ -59,22 +37,11 @@ class RedirectRenderClass extends RenderClassAbstract
 
         return $this;
     }
-
-    /**
-     * @param string|array $description
-     * @return $this
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
+    
     /**
      * @return mixed
      */
-    public function getUrl()
+    private function getUrl()
     {
         $href = $this->href;
 
@@ -92,9 +59,10 @@ class RedirectRenderClass extends RenderClassAbstract
     {
         $value = $this->value;
 
-        if (is_string($value)) {
-            return '<a href="' . $this->getUrl() . '" target="' . $this->target . '"/>' . $value . '</a>';
+        if (is_string($value) || is_int($value)) {
+            return '<a href="' . $this->getUrl() . '" target="' . $this->target . '" class="' . $this->class . '"/>' . $value . '</a>';
         }
+
         return null;
     }
 

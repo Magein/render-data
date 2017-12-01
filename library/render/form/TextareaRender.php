@@ -2,16 +2,12 @@
 
 namespace Magein\renderData\library\render\form;
 
-use Magein\renderData\library\constant\FormItemConstant;
-use Magein\renderData\library\render\FormRenderClass;
+use Magein\renderData\library\constant\FormFieldConstant;
+use Magein\renderData\library\render\FormRender;
 
-class TextareaRender extends FormRenderClass
+class TextareaRender extends FormRender
 {
-
-    public function __construct()
-    {
-        $this->setType(FormItemConstant::TYPE_TEXTAREA);
-    }
+    protected $type=FormFieldConstant::TYPE_TEXTAREA;
 
     protected function render()
     {

@@ -2,15 +2,22 @@
 
 namespace Magein\renderData\library\render\form;
 
-use Magein\renderData\library\constant\FormItemConstant;
-use Magein\renderData\library\render\FormRenderClass;
+use Magein\renderData\library\constant\FormFieldConstant;
+use Magein\renderData\library\render\FormRender;
 
-class SelectRender extends FormRenderClass
+class SelectRender extends FormRender
 {
+    protected $type=FormFieldConstant::TYPE_SELECT;
 
-    public function __construct()
+    /**
+     * @param $options
+     * @return $this
+     */
+    public function setOptions($options)
     {
-        $this->setType(FormItemConstant::TYPE_SELECT);
+        $this->options = $options;
+
+        return $this;
     }
 
     protected function render()

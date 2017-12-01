@@ -1,6 +1,6 @@
 <?php
 
-namespace Magein\renderData\library\traits;
+namespace Magein\renderData\library\tools;
 
 use Magein\renderData\library\render\form\CheckboxRender;
 use Magein\renderData\library\render\form\FileRender;
@@ -11,47 +11,51 @@ use Magein\renderData\library\render\form\SelectRender;
 use Magein\renderData\library\render\form\TextareaRender;
 use Magein\renderData\library\render\form\TextRender;
 
-use Magein\renderData\library\render\CharRenderClass;
-use Magein\renderData\library\render\ImageRenderClass;
-use Magein\renderData\library\render\RedirectRenderClass;
+use Magein\renderData\library\render\CharRender;
+use Magein\renderData\library\render\ImageRender;
+use Magein\renderData\library\render\RedirectRender;
+use Magein\renderData\library\RenderFactory;
 
 /**
  * Trait Tips
  * @package Magein\renderData\library\traits
  */
-trait Tips
+class RenderClass
 {
+
+    use \Magein\renderData\demo\RenderClass;
+
     /**
      *
-     * @return CharRenderClass
+     * @return CharRender
      */
     public function char()
     {
-        $renderClass = new CharRenderClass();
-        $this->setRenderClass($renderClass);
+        $renderClass = new CharRender();
+        RenderFactory::setFieldRenderClass($renderClass);
 
         return $renderClass;
     }
 
     /**
      *
-     * @return ImageRenderClass
+     * @return ImageRender
      */
     public function image()
     {
-        $renderClass = new ImageRenderClass();
-        $this->setRenderClass($renderClass);
+        $renderClass = new ImageRender();
+        RenderFactory::setFieldRenderClass($renderClass);
 
         return $renderClass;
     }
 
     /**
-     * @return RedirectRenderClass
+     * @return RedirectRender
      */
     public function redirect()
     {
-        $renderClass = new RedirectRenderClass();
-        $this->setRenderClass($renderClass);
+        $renderClass = new RedirectRender();
+        RenderFactory::setFieldRenderClass($renderClass);
 
         return $renderClass;
     }
@@ -62,7 +66,7 @@ trait Tips
     public function text()
     {
         $renderClass = new TextRender();
-        $this->setRenderClass($renderClass);
+        RenderFactory::setFieldRenderClass($renderClass);
 
         return $renderClass;
     }
@@ -73,7 +77,7 @@ trait Tips
     public function password()
     {
         $renderClass = new PasswordRender();
-        $this->setRenderClass($renderClass);
+        RenderFactory::setFieldRenderClass($renderClass);
 
         return $renderClass;
     }
@@ -84,7 +88,7 @@ trait Tips
     public function hidden()
     {
         $renderClass = new HiddenRender();
-        $this->setRenderClass($renderClass);
+        RenderFactory::setFieldRenderClass($renderClass);
 
         return $renderClass;
     }
@@ -95,7 +99,7 @@ trait Tips
     public function radio()
     {
         $renderClass = new RadioRender();
-        $this->setRenderClass($renderClass);
+        RenderFactory::setFieldRenderClass($renderClass);
         return $renderClass;
     }
 
@@ -106,7 +110,7 @@ trait Tips
     {
         $renderClass = new CheckboxRender();
 
-        $this->setRenderClass($renderClass);
+        RenderFactory::setFieldRenderClass($renderClass);
 
         return $renderClass;
     }
@@ -118,7 +122,7 @@ trait Tips
     {
         $renderClass = new SelectRender();
 
-        $this->setRenderClass($renderClass);
+        RenderFactory::setFieldRenderClass($renderClass);
 
         return $renderClass;
     }
@@ -129,7 +133,7 @@ trait Tips
     public function file()
     {
         $renderClass = new FileRender();
-        $this->setRenderClass($renderClass);
+        RenderFactory::setFieldRenderClass($renderClass);
 
         return $renderClass;
     }
@@ -140,7 +144,7 @@ trait Tips
     public function textarea()
     {
         $renderClass = new TextareaRender();
-        $this->setRenderClass($renderClass);
+        RenderFactory::setFieldRenderClass($renderClass);
 
         return $renderClass;
     }

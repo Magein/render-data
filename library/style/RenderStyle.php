@@ -2,48 +2,88 @@
 
 namespace Magein\renderData\library\style;
 
+use Magein\renderData\library\RenderFactory;
 use Magein\renderData\library\RenderStyleAbstract;
 
 class RenderStyle extends RenderStyleAbstract
 {
     /**
-     * @param array $title
      * @param array $data
+     * @param array $field
+     * @param array $fieldTitle
+     * @return $this
+     */
+    public function element(array $data, array $field, array $fieldTitle)
+    {
+        $this->data = $data;
+
+        $this->field = $field;
+
+        $this->fieldTitle = $fieldTitle;
+
+        return $this;
+    }
+
+    /**
+     * @param $style
      * @return string
      */
-    public function table(array $title, array $data)
+    public function render($style)
     {
+        return call_user_func([$this, $style]);
+    }
+
+    /**
+     * @return string
+     */
+    public function table()
+    {
+        $result = [];
+        if ($this->data) {
+            foreach ($this->data as $item) {
+                $result[] = RenderFactory::renderData($this->field, $item);
+            }
+        }
+
         $trans = function ($string, $item) {
             return $string . '<td>' . (is_array($item) ? implode(',', $item) : $item) . '</td>';
         };
 
         $tr = '';
-        foreach ($data as $item) {
-            $tr .= '<tr>' . array_reduce($item, $trans) . '</tr>';
+
+        if ($result) {
+            foreach ($result as $item) {
+                $tr .= '<tr>' . array_reduce($item, $trans) . '</tr>';
+            }
         }
 
-        $table = '<table><thead>' . array_reduce($title, $trans) . '</thead><tbody>' . $tr . '</tbody></table>';
+        $table = '<thead>' . array_reduce($this->fieldTitle, $trans) . '</thead><tbody>' . $tr . '</tbody>';
 
         return $table;
     }
 
     /**
-     * @param $title
-     * @param $data
      * @return string
      */
-    public function form($title, $data)
+    public function form()
     {
         $form = '';
 
-        foreach ($data as $name => $item) {
+        $result = RenderFactory::renderData($this->field, $this->data);
 
-            if (isset($title[$name]) && $title[$name]) {
-                $form .= '<div>' . $title[$name] . ':' . $item . '</div>';
-            } else {
-                $form .= $item;
+        if ($result) {
+
+            foreach ($result as $name => $item) {
+
+                $title = isset($this->fieldTitle[$name]) ? $this->fieldTitle[$name] : '';
+
+                if ($title) {
+                    $form .= '<div>' . $title . ':' . $item . '</div>';
+                } else {
+                    $form .= $item;
+                }
+
             }
-
         }
 
         return $form;
