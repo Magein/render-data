@@ -162,9 +162,10 @@ class RenderFactory
     /**
      * @param $name
      * @param string $title
-     * @return RenderClass
+     * @param null $class
+     * @return mixed
      */
-    public function append($name, $title = '')
+    public function append($name, $title = '', $class = null)
     {
         if (empty($title) && isset($this->fieldTitle[$name])) {
             $title = $this->fieldTitle[$name];
@@ -177,7 +178,7 @@ class RenderFactory
 
         $this->lastFieldName = $name;
 
-        $this->fieldClass();
+        $this->fieldClass($class);
 
         return $this->renderClass;
     }
