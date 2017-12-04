@@ -163,7 +163,7 @@ class RenderFactory
      * @param $name
      * @param string $title
      * @param null $class
-     * @return mixed
+     * @return RenderClass
      */
     public function append($name, $title = '', $class = null)
     {
