@@ -22,9 +22,6 @@ use Magein\renderData\library\RenderFactory;
  */
 class RenderClass
 {
-
-    use \Magein\renderData\demo\RenderClass;
-
     /**
      *
      * @return CharRender
