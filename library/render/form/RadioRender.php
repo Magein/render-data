@@ -22,21 +22,22 @@ class RadioRender extends FormRender
 
     protected function render()
     {
+        $value = $this->value;
+
+        $this->value = null;
+
         $attr = $this->attr();
 
         $input = '';
 
-        $value = $this->value;
-
         if ($this->options) {
 
             foreach ($this->options as $key => $option) {
-
+                $checked = false;
                 if ($value !== null && $value == $key) {
                     $checked = true;
                 }
-
-                $input .= '<label><input ' . $attr . ' value="' . $key . '" ' . (isset($checked) ? 'checked' : '') . '/><span>' . $option . '</span></label>';
+                $input .= '<label><input ' . $attr . ' value="' . $key . '" ' . ($checked ? 'checked' : '') . '/><span>' . $option . '</span></label>';
             }
 
         }
