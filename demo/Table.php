@@ -24,16 +24,16 @@ $renderData->append('height');
 $renderData->append('photo')->image();
 $renderData->append('operate')->operate()->setOperate(function ($param) {
 
-    $deleteAjax = \Magein\renderData\demo\tools\Tools::ajax('./table.php', ['id' => $param['id']]);
-    $deleteConfirm = \Magein\renderData\demo\tools\Tools::confirm('请再次确认是否删除', $deleteAjax);
+    $deleteAjax = \Magein\renderData\demo\tools\DevTools::ajax('./table.php', ['id' => $param['id']]);
+    $deleteConfirm = \Magein\renderData\demo\tools\DevTools::confirm('请再次确认是否删除', $deleteAjax);
 
-    $input[] = \Magein\renderData\demo\tools\Tools::input('reason', '原因', '没有原因', '这个错误信息');
-    $input[] = \Magein\renderData\demo\tools\Tools::input('name', '姓名', '不知道');
-    $prompt = \Magein\renderData\demo\tools\Tools::prompt($input, $deleteAjax);
+    $input[] = \Magein\renderData\demo\tools\DevTools::input('reason', '原因', '没有原因', '这个错误信息');
+    $input[] = \Magein\renderData\demo\tools\DevTools::input('name', '姓名', '不知道');
+    $prompt = \Magein\renderData\demo\tools\DevTools::prompt($input, $deleteAjax);
 
-    $operate[] = \Magein\renderData\demo\tools\Tools::operate('编辑', './table.php?id=' . $param['id']);
-    $operate[] = \Magein\renderData\demo\tools\Tools::operate('删除', '', $deleteConfirm);
-    $operate[] = \Magein\renderData\demo\tools\Tools::operate('弹出框', '', $prompt);
+    $operate[] = \Magein\renderData\demo\tools\DevTools::operate('编辑', './table.php?id=' . $param['id']);
+    $operate[] = \Magein\renderData\demo\tools\DevTools::operate('删除', '', $deleteConfirm);
+    $operate[] = \Magein\renderData\demo\tools\DevTools::operate('弹出框', '', $prompt);
 
     return $operate;
 });

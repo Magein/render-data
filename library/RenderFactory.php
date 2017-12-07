@@ -165,9 +165,9 @@ class RenderFactory
      * @param null $class
      * @return RenderClass
      */
-    public function append($name, $title = '', $class = null)
+    public function append($name, $title = null, $class = null)
     {
-        if (empty($title) && isset($this->fieldTitle[$name])) {
+        if (null === $title && isset($this->fieldTitle[$name])) {
             $title = $this->fieldTitle[$name];
         }
 

@@ -2,7 +2,7 @@
 
 namespace Magein\renderData\demo\tools;
 
-class Tools
+class DevTools
 {
     /**
      * @param $operate
@@ -91,6 +91,7 @@ class Tools
      */
     public static function input($name, $title = '', $value = '', $message = '')
     {
+
         return [
             'name' => $name,
             'title' => $title,
