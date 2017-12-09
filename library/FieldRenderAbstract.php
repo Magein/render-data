@@ -22,22 +22,22 @@ abstract class FieldRenderAbstract
     /**
      * @var string
      */
-    protected $name;
+    protected $name = null;
 
     /**
      * @var string | array
      */
-    protected $value;
+    protected $value = null;
 
     /**+
      * @var string
      */
-    protected $class;
+    protected $class = null;
 
     /**
      * @var callable
      */
-    protected $callback;
+    protected $callback = null;
 
     /**
      * @param $data
@@ -54,7 +54,7 @@ abstract class FieldRenderAbstract
      * @param $name
      * @return $this
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
 

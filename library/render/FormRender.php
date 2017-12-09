@@ -9,12 +9,12 @@ class FormRender extends FieldRenderAbstract
     /**
      * @var string
      */
-    protected $type = '';
+    protected $type = null;
 
     /**
      * @var string
      */
-    protected $name = '';
+    protected $name = null;
 
     /**
      * @var integer
@@ -24,7 +24,12 @@ class FormRender extends FieldRenderAbstract
     /**
      * @var string
      */
-    protected $placeholder = '';
+    protected $placeholder = null;
+
+    /**
+     * @var string|null
+     */
+    protected $message = null;
 
     /**
      * @var array
@@ -58,20 +63,24 @@ class FormRender extends FieldRenderAbstract
     {
         $attr = '';
 
-        if ($this->type) {
+        if (null !== $this->type) {
             $attr .= ' type="' . $this->type . '"';
         }
 
-        if ($this->name) {
+        if (null !== $this->name) {
             $attr .= ' name="' . $this->name . '"';
         }
 
-        if ($this->value) {
+        if (null !== $this->value) {
             $attr .= ' value="' . $this->value . '"';
         }
 
         if ($this->placeholder) {
             $attr .= ' placeholder="' . $this->placeholder . '"';
+        }
+
+        if ($this->message) {
+            $attr .= ' message="' . $this->message . '"';
         }
 
         if ($this->required) {
@@ -120,7 +129,7 @@ class FormRender extends FieldRenderAbstract
      * @param string $name
      * @return $this
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
 
@@ -139,12 +148,23 @@ class FormRender extends FieldRenderAbstract
     }
 
     /**
-     * @param $placeholder
+     * @param string $placeholder
      * @return $this
      */
-    public function setPlaceholder($placeholder)
+    public function setPlaceholder(string $placeholder)
     {
         $this->placeholder = $placeholder;
+
+        return $this;
+    }
+
+    /**
+     * @param string $message
+     * @return $this
+     */
+    public function setMessage(string $message)
+    {
+        $this->message = $message;
 
         return $this;
     }
