@@ -62,7 +62,10 @@ class RedirectRender extends FieldRenderAbstract
         $href = $this->getUrl() ?: 'javascript:;';
 
         if (is_string($value) || is_int($value)) {
-            return '<a href="' . $href . '" target="' . $this->target . '" class="' . $this->class . '"/>' . $value . '</a>';
+
+            if (is_string($href)) {
+                return '<a href="' . $href . '" target="' . $this->target . '" class="' . $this->class . '"/>' . $value . '</a>';
+            }
         }
 
         return null;
