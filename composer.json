@@ -2,7 +2,7 @@
   "name": "magein/render-data",
   "description": "php渲染表格和表单工具",
   "type": "library",
-  "homepage": "https://github.com/magein/renderdata",
+  "homepage": "https://github.com/magein/render-data",
   "license": "Apache-2.0",
   "authors": [
     {
