@@ -73,6 +73,7 @@ abstract class FieldRenderAbstract
     }
 
     /**
+     * callback 一般用于动态修改渲染类
      * @param $callback
      * @return $this
      */

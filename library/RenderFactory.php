@@ -59,6 +59,16 @@ class RenderFactory
     private static $instance;
 
     /**
+     * @var string
+     */
+    private $error;
+
+    /**
+     * @var bool
+     */
+    public $debug = true;
+
+    /**
      * VisualData constructor.
      * @param array $data
      * @param string $style
@@ -77,7 +87,6 @@ class RenderFactory
         $this->init();
     }
 
-
     public function init()
     {
         // 注册渲染样式类
@@ -88,13 +97,34 @@ class RenderFactory
     }
 
     /**
+     * @param $error
+     * @throws \Exception
+     */
+    private function setError($error)
+    {
+        if ($this->debug) {
+            throw new \Exception($error);
+        } else {
+            $this->error = $error;
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getError()
+    {
+        return $this->error;
+    }
+
+    /**
      * @param RenderStyleAbstract $class
      * @throws \Exception
      */
     public function setRenderStyle(RenderStyleAbstract $class)
     {
         if (!method_exists($class, $this->style)) {
-            throw new \Exception('没有找到对应的方法渲染样式');
+            $this->setError('没有找到对应的方法渲染样式');
         }
 
         $this->renderStyle = $class;
@@ -113,11 +143,11 @@ class RenderFactory
                 $class = new $renderClass();
 
                 if (!$class instanceof RenderClass) {
-                    throw new \Exception('渲染类需要继承RenderClass');
+                    $this->setError('渲染类需要继承RenderClass');
                 }
 
             } catch (\Exception $exception) {
-                throw new \Exception('实例化渲染类失败:' . $renderClass);
+                $this->setError('实例化渲染类失败:' . $renderClass);
             }
 
             $this->renderClass = $class;
@@ -183,7 +213,6 @@ class RenderFactory
         return $this->renderClass;
     }
 
-
     /**
      * @param null $class
      * @throws \Exception
@@ -202,7 +231,7 @@ class RenderFactory
         if (is_object($class)) {
 
             if (!$class instanceof FieldRenderAbstract) {
-                throw new \Exception(get_class($class) . ' class must extends RenderClassAbstract');
+                $this->setError(get_class($class) . ' class must extends RenderClassAbstract');
             }
 
         } else {
@@ -210,10 +239,10 @@ class RenderFactory
             if (class_exists($class)) {
                 $class = new $class();
                 if (!$class instanceof FieldRenderAbstract) {
-                    throw new \Exception(get_class($class) . ' class must extends RenderClassAbstract');
+                    $this->setError(get_class($class) . ' class must extends RenderClassAbstract');
                 }
             } else {
-                throw new \Exception($class . ' class not found');
+                $this->setError($class . ' class not found');
             }
         }
 
@@ -243,6 +272,7 @@ class RenderFactory
     }
 
     /**
+     * 获取渲染结果
      * @param array $dataFields
      * @param array $data
      * @return array
@@ -256,27 +286,35 @@ class RenderFactory
         }
 
         foreach ($dataFields as $name => $item) {
-            /**
-             * @var FieldRenderAbstract $class
-             */
-            $class = clone $item['class'];
 
-            if (is_object($class)) {
+            if (is_object($item['class'])) {
 
+                /**
+                 * @var FieldRenderAbstract $class
+                 */
+                $class = clone $item['class'];
+
+                // 是否设置回调函数
                 if ($class->__get('callback')) {
                     $class = call_user_func($class->__get('callback'), $data);
                 }
 
-                $value = $class->__get('value');
+                if ($class instanceof FieldRenderAbstract) {
 
-                if ($value === null) {
-                    $value = isset($data[$name]) ? $data[$name] : null;
+                    $value = $class->__get('value');
+
+                    if ($value === null) {
+                        $value = isset($data[$name]) ? $data[$name] : null;
+                    }
+
+                    $class->setData($data);
+                    $class->setValue($value);
+
+                    if (method_exists($class, 'render')) {
+                        // 调用渲染类方法
+                        $result[$name] = call_user_func([$class, 'render']);
+                    }
                 }
-
-                $class->setData($data);
-                $class->setValue($value);
-
-                $result[$name] = $class->render();
             }
         }
 
