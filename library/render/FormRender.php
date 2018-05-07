@@ -129,7 +129,7 @@ class FormRender extends FieldRenderAbstract
      * @param string $name
      * @return $this
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         $this->name = $name;
 
@@ -151,7 +151,7 @@ class FormRender extends FieldRenderAbstract
      * @param string $placeholder
      * @return $this
      */
-    public function setPlaceholder(string $placeholder)
+    public function setPlaceholder($placeholder)
     {
         $this->placeholder = $placeholder;
 
@@ -162,7 +162,7 @@ class FormRender extends FieldRenderAbstract
      * @param string $message
      * @return $this
      */
-    public function setMessage(string $message)
+    public function setMessage($message)
     {
         $this->message = $message;
 

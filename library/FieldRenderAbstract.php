@@ -51,10 +51,10 @@ abstract class FieldRenderAbstract
     }
 
     /**
-     * @param $name
+     * @param string $name
      * @return $this
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         $this->name = $name;
 
