@@ -217,4 +217,13 @@ class FormRender extends FieldRenderAbstract
 
         return $this;
     }
+
+    /**
+     * @param string $name
+     * @return null
+     */
+    public function __get($name)
+    {
+        return $this->$name ?: null;
+    }
 }
