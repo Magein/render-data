@@ -57,6 +57,11 @@ class FormRender extends FieldRenderAbstract
     protected $readonly = false;
 
     /**
+     * @var string
+     */
+    protected $description = '';
+
+    /**
      * @return string
      */
     protected function attr()
@@ -198,6 +203,17 @@ class FormRender extends FieldRenderAbstract
     public function setDisabled($disabled = true)
     {
         $this->disabled = $disabled;
+
+        return $this;
+    }
+
+    /**
+     * @param string $description
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
 
         return $this;
     }
