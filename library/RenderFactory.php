@@ -257,7 +257,7 @@ class RenderFactory
     public function render()
     {
         $class = $this->renderStyle;
-        $class->element($this->data, $this->fields, $this->getFieldTitle());
+        $class->element($this->data ?: [], $this->fields ?: [], $this->getFieldTitle());
         $result = $class->render($this->style);
         return $result;
     }
