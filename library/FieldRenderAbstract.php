@@ -101,7 +101,7 @@ abstract class FieldRenderAbstract
      */
     public function __get($name)
     {
-        return $this->$name;
+        return property_exists($this, $name) ? $this->$name : '';
     }
 
     /**
