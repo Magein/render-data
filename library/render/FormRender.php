@@ -224,6 +224,6 @@ class FormRender extends FieldRenderAbstract
      */
     public function __get($name)
     {
-        return $this->$name ?: null;
+        return property_exists($this, $name) ? $this->$name : null;
     }
 }
